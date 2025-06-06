@@ -15,6 +15,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -28,10 +29,10 @@ export default function Chatbot() {
     e.preventDefault()
     if (!input.trim()) return
 
-    const userMessage: Message = { role: 'user', content: input }
-    setMessages((prev) => [...prev, userMessage])
+    const userMessage = input.trim()
     setInput('')
-    setIsTyping(true)
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }])
+    setIsLoading(true)
 
     try {
       const response = await fetch('/api/chat', {
@@ -39,26 +40,24 @@ export default function Chatbot() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: userMessage }),
       })
 
-      const data = await response.json()
-      const assistantMessage: Message = {
-        role: 'assistant',
-        content: data.response,
+      if (!response.ok) {
+        throw new Error('Failed to get response')
       }
-      setMessages((prev) => [...prev, assistantMessage])
+
+      const data = await response.json()
+      const assistantMessage = data.choices[0].message.content
+      setMessages(prev => [...prev, { role: 'assistant', content: assistantMessage }])
     } catch (error) {
       console.error('Error:', error)
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: 'Sorry, I encountered an error. Please try again.',
-        },
-      ])
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: 'I apologize, but I encountered an error. Please try again later.' 
+      }])
     } finally {
-      setIsTyping(false)
+      setIsLoading(false)
     }
   }
 
@@ -149,7 +148,7 @@ export default function Chatbot() {
                 />
                 <button
                   type="submit"
-                  disabled={!input.trim() || isTyping}
+                  disabled={!input.trim() || isTyping || isLoading}
                   className="bg-primary text-white px-4 py-2 rounded-lg disabled:opacity-50"
                 >
                   Send
