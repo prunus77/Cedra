@@ -88,7 +88,13 @@ export default function VolunteerPage() {
     <main className="min-h-screen bg-gray-50">
       {/* Banner/Header */}
       <section className="relative h-72 flex items-center justify-center">
-        <Image src="/volunteer-banner.jpg" alt="Volunteer Banner" fill className="object-cover" priority />
+        <Image 
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2000&q=80" 
+          alt="Volunteer Banner" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white text-center px-4">
             Join hands with CEDRA to make a difference in vulnerable communities.

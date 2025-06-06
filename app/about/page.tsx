@@ -11,7 +11,7 @@ export default function About() {
       <section className="relative h-96 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/about-hero.jpg"
+            src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2000&q=80"
             alt="About CEDRA"
             fill
             className="object-cover"
@@ -56,7 +56,7 @@ export default function About() {
             </div>
             <div className="relative h-96">
               <Image
-                src="/our-story.jpg"
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80"
                 alt="Our Story"
                 fill
                 className="object-cover rounded-lg"
@@ -121,7 +121,7 @@ export default function About() {
               >
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <Image
-                    src={`/team-${member}.jpg`}
+                    src={`https://images.unsplash.com/photo-${member === 1 ? '1573497019940-1c28c88b4f3e' : member === 2 ? '1580489944761-15a19d654956' : '1544005313-94ddf0286df2'}?auto=format&fit=crop&w=400&q=80`}
                     alt={`Team Member ${member}`}
                     fill
                     className="object-cover rounded-full"
@@ -152,7 +152,7 @@ export default function About() {
               >
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <Image
-                    src={member.img}
+                    src={`https://images.unsplash.com/photo-${idx === 0 ? '1560250097-0b93528c311a' : idx === 1 ? '1472099645785-5658abf4ff4e' : '1438761681033-6461ffad8d80'}?auto=format&fit=crop&w=400&q=80`}
                     alt={member.name}
                     fill
                     className="object-cover rounded-full"

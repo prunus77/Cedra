@@ -15,7 +15,7 @@ export default function Donate() {
       <section className="relative h-96 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/donate-hero.jpg"
+            src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=2000&q=80"
             alt="Donate to CEDRA"
             fill
             className="object-cover"

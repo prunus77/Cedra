@@ -12,7 +12,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero-bg.jpg"
+            src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=2000&q=80"
             alt="Women empowerment background"
             fill
             className="object-cover"
@@ -119,7 +119,7 @@ export default function Home() {
             </div>
             <div className="relative h-96">
               <Image
-                src="/impact-image.jpg"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80"
                 alt="Women in training"
                 fill
                 className="object-cover rounded-lg"
